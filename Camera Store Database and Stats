@@ -1,0 +1,23 @@
+--Create a database for vehicle cameras
+
+CREATE table store (id integer primary key, name text, description text, category text, price integer, sale_price integer);
+
+INSERT INTO store VALUES (1, "X1 Crystal View", "Camera for rearview and backing up", "Backup Cameras", "$400", "$359");
+INSERT INTO store VALUES (2, "Silver Bravo", "Front Dash Cam and Recorder", "Dash Cams", "$350", "");
+INSERT INTO store VALUES (3, "Diego Rearview Camera", "Digital Backup Camera for Trucks", "Backup Cameras", "$500", "$425");
+INSERT INTO store VALUES (4, "Onyx Tailgate Camera", "Low profile backup camera for tailgate", "Backup Cameras", "$250", "$229");
+INSERT INTO store VALUES (5, "Juniper Dash Cam", "Winow mounted dash cam recorder", "Dash Cams", "$200", "");
+
+--Display the database
+SELECT * FROM store;
+
+--what are the products with a sale price greater than $300?
+SELECT * FROM store WHERE sale_price > "$300";
+
+
+--How many items in the store are more than $300 in each category?
+SELECT category, COUNT(*)
+FROM store
+WHERE price > "$300"
+GROUP BY category;
+
