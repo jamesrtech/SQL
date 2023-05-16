@@ -54,25 +54,35 @@ INSERT INTO Marvels VALUES(24, "Venon", 78, "Neutral", "Male", 1.90, 118, "USA",
 INSERT INTO Marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "USA", 2, 7, 2, 7, 1, 4);
 INSERT INTO Marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "USA", 5, 2, 2, 2, 5, 3);
 
-
+--Display the database
 SELECT * FROM Marvels ORDER BY Popularity;
 
+
+
+--Which male characters are Neutral alignment?
 SELECT * FROM Marvels WHERE Gender = "Male"
 AND Alignment = "Neutral";
 
+
+--Which characters have high strength and intelligence?
 SELECT Gender, name, Intelligence, Strength
 FROM Marvels WHERE Strength > 6
 AND Intelligence > 4;
 
+
+--What is the total power level for all characters?
 SELECT name, SUM(Intelligence + Strength + Speed + Durability + Energy_Projection + Fighting_Skills) AS total_energy
 FROM Marvels
 GROUP BY name
 ORDER BY total_energy asc;
 
+
+--Which characters are over 1.85 meters tall?
 SELECT name, gender, height_m FROM Marvels
 GROUP BY name
 HAVING height_m >= 1.85;
 
+--Which characters are the most popular from the list?
 SELECT name, gender, popularity,
 CASE
     WHEN popularity > 50 THEN "WOW"
